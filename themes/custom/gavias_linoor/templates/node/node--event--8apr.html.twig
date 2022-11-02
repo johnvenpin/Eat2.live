@@ -1,0 +1,337 @@
+{%
+  set classes = [
+    'node',
+    'node-detail',
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+    'clearfix',
+  ]
+%}
+{% set conBody  %}
+  {{ content.body }}
+{% endset %}
+
+<!-- Start Display article for teaser page -->
+{% if view_mode == 'teaser' %}
+  <article{{ attributes.addClass(classes) }}>
+    <div class="event-block">
+      <div class="event-image text-center">
+        {{ content.field_event_image }}
+        <div class="date">
+          <span class="day">{{ node.field_event_start.value|date('j') }}</span><span class="month">{{ node.field_event_start.value|date('F') }}</span>
+        </div>
+      </div>
+      <div class="event-content">
+        <div class="event-info">
+          <div class="title"><a href="{{ url }}" rel="bookmark">{{ label }}</a></div>
+          <div class="event-meta">
+            <span class="event-time"> {{ node.field_event_time.value }} </span>&nbsp;-&nbsp;<span class="event-address"> {{ node.field_event_address.value }} </span>
+          </div>
+          <div class="body">{{ conBody|striptags }}</div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+{% elseif view_mode == 'teaser_2' %}
+
+    <div class="event-block-2">
+      <div class="event-image text-center">
+        {{ content.field_event_image }}
+        <div class="event-date">
+
+          <!-- {node.field_start_time_date.value }} -->
+
+          {% if node.field_start_time_date.value %}
+            <span class="month">{{ node.field_start_time_date.value|date('l j') }} </span>
+            <span class="date">{{ node.field_start_time_date.value|date('M') }} </span>
+          {% endif %}
+
+        </div>
+      </div>
+      <div class="content-inner clearfix">
+        <div class="event-content-inner">
+          <div class="event-content">
+            <h3{{ title_attributes.addClass('post-title') }}><a href="{{ url }}" rel="bookmark">{{ label }}</a></h3>
+            <div class="event-meta">
+              <span class="event-time">
+                    {% if node.field_start_time_date.value %}
+                      <span class="month">{{ node.field_start_time_date.value|date('g:i a') }} </span>
+                    {% endif %}
+
+
+            </span>&nbsp;&nbsp;-&nbsp;&nbsp;<span class="event-address"> {{ node.field_event_address.value }} </span>
+            </div>
+            <div class="event-line"></div>
+            <div class="event-description">{{ conBody|striptags }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% else %}
+
+<article{{ attributes.addClass(classes.addClass('node-detail')) }}>
+  <div class="post-block event-full">
+    <div class="post-thumbnail">
+      <!-- { content.field_event_image }} -->
+
+      <div id="renderer" class="light-body" style=' {{ content.field_event_image }} '>
+        <div class='light x1'></div>
+        <div class='light x2'></div>
+        <div class='light x3'></div>
+        <div class='light x4'></div>
+        <div class='light x5'></div>
+        <div class='light x6'></div>
+        <div class='light x7'></div>
+        <div class='light x8'></div>
+        <div class='light x9'></div>
+
+      </div>
+
+      <div id="join-container">
+          <button id="joinLeaveButton" class="circle-pulse pulse" value="{{ content.field_token.0 }}" onclick="joinCall()">Join Eatin <i class="fa fa-play" aria-hidden="true"></i> </button>
+      </div>
+
+      <div id="status" class="start-time"><i class="fa fa-clock-o" aria-hidden="true"></i> <p class="blink">Please Hit the Join Eating to Start</p>  </div>
+
+
+
+      <div id="start-time-countdown"> Eating Starts </div>
+
+      <div class="aside">
+
+        <div id="chat-message" class="aside__item">
+          <p>Welcome to the Eating</p>
+        </div>
+
+        <div id="ChatForm" class="aside__item">
+
+            <h1>Chat</h1>
+
+          <textarea id="textcontent" placeholder="Type Text..." rows="4" cols="25"></textarea>
+          <div class="optionsHide" id="chattext"></div>
+
+          <button id="displayNameButton" onclick="sendmessagea()" value="{{ user.displayname }}" title="displayNameButton" class="">Send Message</button>
+
+        </div>
+    </div>
+
+      <button id="resourceIdButton" value="{{ node.label }}" onclick="messagecheck()" title="resourceIdButton" class="optionsHide">Recieve Message</button>
+
+      <!-- <button id="joinLeaveButton"  title="Join Conference" class="toolbarButton callStart blink"></button> -->
+
+      <!-- Chat -->
+
+
+
+
+      <script>
+        document.getElementById("chatsubmit").addEventListener("click", function(event){
+          event.preventDefault();
+            });
+      </script>
+
+
+      <div class="event-info clearfix">
+          <div class="date"><i class="fa fa-clock"></i>{{ node.field_start_time_date.value|date("g:ia")  }} </div>
+        <div class="date"><i class="fa fa-calendar"></i>{{ node.field_start_time_date.value|date("d M y")  }} </div>
+        <div ><i class="fa fa-map-marker"></i> {{ content.field_event_address }} </div>
+      </div>
+    </div>
+
+
+
+    <div class="post-content">
+      {{ title_prefix }}
+         <h1{{ title_attributes.addClass('post-title') }}>{{ label }}</h1>
+      {{ title_suffix }}
+
+      <script>
+
+      function messagecheck(){
+
+        receiveMessage(vidyoConnector);
+
+        // document.getElementById("status").innerHTML = "Checking Messsages";
+
+      }
+
+      // Get Content of text area and add to chattext live
+
+      var textcontent = document.getElementById('textcontent');
+
+      textcontent.onkeyup = textcontent.onkeypress = function(){
+      document.getElementById('chattext').innerHTML = this.value;
+      };
+
+
+      function sendmessagea(){
+
+        //  this functions as a send messsage to chat on entering into text area
+
+        var chatmessage = document.getElementById('chattext');
+
+        textContent = chatmessage.textContent;
+
+        // console.log(textContent);
+
+        vidyoConnector.SendChatMessage({message:textContent});
+
+        document.getElementById("chat-message").innerHTML += "<p>" + textContent + "</p>";
+
+        // Clear Text Area
+
+        document.getElementById("textcontent").value = "";
+
+      }
+      </script>
+
+
+
+
+
+
+      <script>
+
+      var vidyoConnector;
+
+   // Callback method when VidyoIO is done loading (pointer to this method is passed in the onload parameter while including the
+   // VidyoClient.js file)
+      function onVidyoClientLoaded(status) {
+        console.log("VidyoClient load state - " + status.state);
+        if (status.state == "READY") {
+          VC.CreateVidyoConnector({
+          viewId:"renderer", // Div ID where the composited video will be rendered, see VidyoConnector.html;
+          viewStyle:"VIDYO_CONNECTORVIEWSTYLE_Default", // Visual style of the composited renderer
+          remoteParticipants:10, // Maximum number of participants to render
+          logFileFilter:"error",
+          logFileName:"",
+          userData:""
+        }).then(function (vc) {
+          console.log("Create success");
+          // document('div.video-wrapper').css("background", "none"); TODO
+          // document.getElementById("myDiv").style.backgroundColor = "lightblue";
+          vidyoConnector = vc;
+        }).catch(function(error){
+
+        });
+      }
+    };
+
+
+    function joinCall(){
+
+      var token = document.getElementById('joinLeaveButton').value;
+
+      var displayName = document.getElementById('displayNameButton').value;
+
+      var resourceId = document.getElementById('resourceIdButton').value;
+
+      // alert(displayName);
+      // To join a video conference call Connect method
+      vidyoConnector.Connect({
+        host:"prod.vidyo.io",  // Server name, for most production apps it will be prod.vidyo.io
+        token:token,          // Add generated token (https://developer.vidyo.io/documentation/4-1-16-8/getting-started#Tokens)
+        displayName:displayName,  // Display name
+        resourceId:"room1", // Room name
+        onSuccess: function(){
+          console.log("Connected!! YAY!");
+          document.getElementById("status").innerHTML = "Connected!! YAY!";
+          document.getElementById("vertical-center").className.fadeOut(1000) = " optionsHide";
+        },
+        onFailure: function(reason){
+          console.error("Connection failed");
+          document.getElementById("status").innerHTML = "Connection failed " + reason;
+          document.getElementById("join-container").className = " optionsHide";
+        },
+        onDisconnected: function(reason) {
+          console.log(" disconnected - " + reason);
+          document.getElementById("status").innerHTML = "disconnected - " + reason;
+        }
+      })
+    }
+  </script>
+
+  <script src="https://static.vidyo.io/latest/javascript/VidyoClient/VidyoClient.js?onload=onVidyoClientLoaded"></script>
+
+  <script>
+
+        console.log("Checking Message");
+        /* Register to receive chat messages */
+        function receiveMessage(vidyoConnector){
+          vidyoConnector.RegisterMessageEventListener({
+              onChatMessageReceived: (participant, chatMessage) => {
+                console.log("We got here 121");
+                document.getElementById("chat-message").innerHTML += "<div> " + chatMessage.body + " </div>";
+                document.getElementById("status").innerHTML += "<div> " + participant.name + " </div>";
+                console.log(participant.name);
+              }
+            }).then(() => {
+              // console.log("We got here 116");
+              // document.getElementById("message").innerHTML += chatMessage.body;
+
+              console.log("RegisterParticipantEventListener Success");
+              // setTimeout(function() { debugger; }, 15000)
+            }).catch(() => {
+              console.err("RegisterParticipantEventListener Failed");
+            });
+        };
+
+        // Set the date we're counting down to
+      // var countDownDate = new Date '
+
+      var countDownDate = new Date("{{ node.field_start_time_date.value }}");
+
+
+      // Update the count down every 1 second
+      var x = setInterval(function() {
+
+        // Get today's date and time
+        var now = new Date().getTime();
+
+        // Find the distance between now and the count down date
+        var distance = countDownDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Output the result in an element with id="demo"
+        document.getElementById("start-time-countdown").innerHTML = "Eatin Starts: " + days + " Days " + hours + " hours "
+        + minutes + " mins " + seconds + " secs ";
+        receiveMessage(vidyoConnector);
+        // If the count down is over, write some text
+        if (distance < 0) {
+          clearInterval(x);
+          var div =document.getElementById("joinLeaveButton");
+          div.classList.remove('optionsHide');
+        }
+        // else(distance > 0){
+        //   document.getElementById("start-time-countdown").className = " optionsHide";
+        // }
+      }, 1000);
+
+  </script>
+
+
+
+      {% if content.comment %}
+        <div id="node-single-comment">
+          {{ content.comment }}
+        </div>
+      {% endif %}
+
+    </div>
+
+  </div>
+
+</article>
+
+<!-- End Display article for detail page -->
+{% endif %}

@@ -1,0 +1,19 @@
+global-styling:
+   version: VERSION
+   header: true
+   css:
+      theme:
+         css/style.css: {}
+         css/animations.css: {}
+         css/chat.css: {}
+         css/clock.css: {}
+         css/basket-ui.css: {}
+         css/sections.css: {}
+   js:
+      js/main.js: {}
+      dependencies:
+          - core/jquery
+          - core/drupal
+          - core/jquery.once
+          - js/main
+          # - js/eatliveengine

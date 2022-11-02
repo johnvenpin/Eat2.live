@@ -1,0 +1,6 @@
+e2lvideo.e2lvideo:
+  title: 'e2lvideo'
+  route_name: e2lvideo.e2lvideo
+  description: 'Please enter your video token'
+  parent: system.admin_config_system
+  weight: 99

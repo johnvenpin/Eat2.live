@@ -1,0 +1,308 @@
+{%
+  set classes = [
+    'node',
+    'node-detail',
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+    'clearfix',
+  ]
+%}
+{% set conBody  %}
+  {{ content.body }}
+{% endset %}
+
+<!-- Start Display article for teaser page -->
+{% if view_mode == 'teaser' %}
+  <article{{ attributes.addClass(classes) }}>
+    <div class="event-block">
+      <div class="event-image text-center">
+        {{ content.field_event_image }}
+        <div class="date">
+          <span class="day">{{ node.field_event_start.value|date('j') }}</span><span class="month">{{ node.field_event_start.value|date('F') }}</span>
+        </div>
+      </div>
+      <div class="event-content">
+        <div class="event-info">
+          <div class="title"><a href="{{ url }}" rel="bookmark">{{ label }}</a></div>
+          <div class="event-meta">
+            <span class="event-time"> {{ node.field_event_time.value }} </span>&nbsp;-&nbsp;<span class="event-address"> {{ node.field_event_address.value }} </span>
+          </div>
+          <div class="body">{{ conBody|striptags }}</div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+{% elseif view_mode == 'teaser_2' %}
+
+    <div class="event-block-2">
+      <div class="event-image text-center">
+        {{ content.field_event_image }}
+        <div class="event-date">
+
+          <!-- {node.field_start_time_date.value }} -->
+
+          {% if node.field_start_time_date.value %}
+            <span class="month">{{ node.field_start_time_date.value|date('l j') }} </span>
+            <span class="date">{{ node.field_start_time_date.value|date('M') }} </span>
+          {% endif %}
+
+        </div>
+      </div>
+      <div class="content-inner clearfix">
+        <div class="event-content-inner">
+          <div class="event-content">
+            <h3{{ title_attributes.addClass('post-title') }}><a href="{{ url }}" rel="bookmark">{{ label }}</a></h3>
+            <div class="event-meta">
+              <span class="event-time">
+                    {% if node.field_start_time_date.value %}
+                      <span class="month">{{ node.field_start_time_date.value|date('g:i a') }} </span>
+                    {% endif %}
+
+
+            </span>&nbsp;&nbsp;-&nbsp;&nbsp;<span class="event-address"> {{ node.field_event_address.value }} </span>
+            </div>
+            <div class="event-line"></div>
+            <div class="event-description">{{ conBody|striptags }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% else %}
+
+<!-- <script src="https://cdn.tutorialjinni.com/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.tutorialjinni.com/magnific-popup.js/1.1.0/magnific-popup.css" /> -->
+
+<article{{ attributes.addClass(classes.addClass('node-detail')) }}>
+  <div class="post-block event-full">
+    <div class="post-thumbnail">
+
+      <div id="video-render-container" class="video-wrapper-container">
+
+        <div id="renderer" class="light-body wow zoomIn animated" style='background: {{ content.field_event_image }} '>
+
+
+
+        </div>
+
+         <div id="chat-message" class="optionsHide">
+
+           <!-- <div id="chat-popup" class="white-popup mfp-hide fadeInDown animated"> -->
+
+               <div id="ChatForm" >
+
+               <h1>Chat</h1>
+
+               <textarea id="chat-text" class="chat-text" placeholder="Type Text..." rows="5" cols="auto"></textarea>
+               <div class="optionsHide" id="chattext"></div>
+
+                 <!-- <a href="#chat-popup" class="open-popup-link btn-theme"><i class="btn-curve"></i><span>Open Chat</span></a> -->
+
+               <button id="displayNameButton" onclick="sendmessagea()" value="{{ user.displayname }}" title="displayNameButton" class="btn-theme">Send</button>
+
+                <!-- class="open-popup-link btn-theme"><i class=""></i><span>Open Chat</span></a> -->
+
+               <!-- </div> -->
+
+           </div>
+
+           <div id="chat-readout"> </div>
+
+
+
+         </div>
+
+      <div id="status"> <i class="fa fa-clock-o" aria-hidden="true"></i> <p class="blink"></p>
+
+          <div id="controls" class="">
+
+            <!-- <div id="join-container" class="optionsHide"> -->
+                <button id="joinLeaveButton" class="btn-theme wow zoomIn animated pulse" value="{{ content.field_token.0 }}" onclick="joinCall()"> <i class="fa fa-play" aria-hidden="true"></i> <br>Join Eatin</button>
+            <!-- </div>   -->
+
+          <a href="#menu-popup" class="open-popup-link btn-theme wow zoomIn animated"><i class="btn-curve"></i><span><img src="/sites/default/files/gbb-uploads/icons-theme/icon-6.png"> <br>Menu</span></a>
+
+          <button id="open-chat" class="btn-theme wow zoomIn animated animated" onclick="openChat()"><img src="/sites/default/files/gbb-uploads/icons-theme/icon-3.png"> <br>Chat</button>
+          <!-- <a href="#chat-popup" class="open-popup-link btn-theme wow zoomIn animated"><i class="btn-curve"></i><span> <img src="/sites/default/files/gbb-uploads/icons-theme/icon-3.png"> <br>Chat</span></a> -->
+
+          <a href="" class="btn-theme wow zoomIn animated"><i class="btn-curve"></i><span> <img src="/sites/default/files/gbb-uploads/icons-theme/fullscreen.png"><br>Screen</span></a>
+
+          </div>
+
+       </div>
+
+       </div>
+
+
+
+
+
+       <script>
+       document.getElementById("chatsubmit").addEventListener("click", function(event){
+           event.preventDefault();
+             });
+       </script>
+
+      <div id="clockbody">
+
+          <div id="clock">
+
+            <h1{{ title_attributes.addClass('post-title') }}>{{ label }}</h1>
+
+            <p class="date">  <span >{{ node.field_start_time_date.value|date("d M y")  }}</span>
+
+            <span class="month">{{ node.field_start_time_date.value|date('g:i a') }} </span> </p>
+
+            <div id="countdown">
+                 <ul>
+                   <li><span id="countdown-days"></span> Days</li>
+                   <li><span id="countdown-hours"></span> Hrs</li>
+                   <li><span id="countdown-minutes"></span> Mins</li>
+                   <li><span id="countdown-seconds"></span> Secs</li>
+                 </ul>
+            </div>
+
+            <div id="duration" data-duration="{{ content.field_eating_duration.0 }}">Duration: {{ content.field_eating_duration.0 }} </div>
+
+            <div data-startdate="{{ node.field_start_time_date.value }}" id="start-time-countdown" class="start-time-countdown time optionsHide">Eating Starts: {{  node.field_start_time_date.value|date("g:ia") }} </div>
+
+            <div id="start-time-readout"> </div>
+
+            </div>
+      </div>
+
+
+      <div id="menu-popup" class="white-popup mfp-hide fadeInDown animated">
+
+          <div id="block-whatscooking" class="aside">
+
+          <div class="aside__item"> <h3>Available</h3>
+
+          <div id="left-basket" class="food-containers" ondrop="dropThis(event, this)" ondragover="allowDropThis(event)">
+            <!-- work around as 0 item in list not picked up -->
+
+           <div draggable="true" class="draggable" ondragstart="dragThis(event)"  ondragover="return false" data-price="{{ node.field_food_available.0.entity.field_price.value }}" id="{{ content.field_food_available.0 }}"> {{ content.field_food_available.0 }} £ {{ node.field_food_available.0.entity.field_price.value }}
+
+           </div>
+
+          {% for food in content.field_food_available  %}
+
+            {% if content.field_food_available[loop.index] %}
+
+              {% if (node.field_food_available[loop.index].entity.field_price.value) is defined %}
+
+                  <div draggable="true"
+                      class="draggable"
+                      ondragstart="dragThis(event)"
+                      ondrop="return false"
+                      ondragover="return false"
+                      data-price="{{ node.field_food_available[loop.index].entity.field_price.value }}"
+                      data-item="{{ content.field_food_available[loop.index] }}"
+                      id="foodid{{loop.index}}">
+                      {{ content.field_food_available[loop.index] }}
+                      £{{ node.field_food_available[loop.index].entity.field_price.value }}
+                  </div>
+
+              {% endif %}
+
+            {% endif %}
+
+          {% endfor %}
+
+             </div>
+
+            </div>
+
+                <div class="aside__item"><h3>Sent</h3>
+
+                <div id="right-basket" class="food-containers" ondrop="dropThis(event, this)" ondragover="allowDropThis(event)">   </div>
+
+               </div>
+            </div>
+
+            <button id="send-food-button" onclick="sendFood()" value="" title="sendFood" class="btn-curve">Check Basket</button>
+             <div id="bill-total"></div>
+             <div id="bill"></div>
+             <div id="basket-items" class="optionsHide"></div>
+             <button id="confirm" onclick="confirm()" class="btn-theme btn-curve"> Confirm </button>
+
+
+               </div>
+
+            <div class="">
+
+
+
+      </div>
+
+      <button id="resourceIdButton" value="{{ node.label }}" onclick="messagecheck()" title="resourceIdButton" class="optionsHide">Recieve Message</button>
+
+      <script>
+
+      // Do message check
+
+      function messagecheck(){
+        receiveMessage(vidyoConnector);
+      }
+
+      // Get Content of text area and add to chattext live
+
+      var textcontent = document.getElementById('textcontent');
+
+      textcontent.onkeyup = textcontent.onkeypress = function(){document.getElementById('chattext').innerHTML = this.value;
+      };
+
+
+      </script>
+
+      <script>
+
+
+  </script>
+
+  <script src="https://static.vidyo.io/latest/javascript/VidyoClient/VidyoClient.js?onload=onVidyoClientLoaded"></script>
+
+  <script>
+
+        console.log("Checking Message");
+        /* Register to receive chat messages */
+        function receiveMessage(vidyoConnector){
+          vidyoConnector.RegisterMessageEventListener({
+              onChatMessageReceived: (participant, chatMessage) => {
+                document.getElementById("chat-message").innerHTML += "<div> " + chatMessage.body + " </div>";
+                document.getElementById("status").innerHTML += "<div> " + participant.name + " </div>";
+                console.log(participant.name);
+              }
+            }).then(() => {
+              // console.log("We got here 116");
+              // document.getElementById("message").innerHTML += chatMessage.body;
+
+              console.log("RegisterParticipantEventListener Success");
+              // setTimeout(function() { debugger; }, 15000)
+            }).catch(() => {
+              console.err("RegisterParticipantEventListener Failed");
+            });
+        };
+
+  </script>
+
+
+
+      {% if content.comment %}
+        <div id="node-single-comment">
+          {{ content.comment }}
+        </div>
+      {% endif %}
+
+    </div>
+
+  </div>
+
+</article>
+
+<!-- End Display article for detail page -->
+{% endif %}

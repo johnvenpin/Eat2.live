@@ -1,0 +1,152 @@
+#left-basket, #right-basket {
+    width: 180px;
+    min-height: 300px;
+    margin: 5px;
+    border: 1px solid #d0cece;
+    background:#fff;
+}
+
+.white-popup .aside__item{
+    padding:0;
+    background:none;
+}
+
+#block-whatscooking p::before{
+  display:none;
+}
+
+#block-whatscooking button, .food_item {
+    color: #53010a;
+    font-family: "Teko", sans-serif;
+    background: #f7f0f0;
+    padding: 6px 10px;
+    border:1px solid #d6d6d6!important;
+    text-align: center;
+    width:140px;
+    margin:10px auto;
+}
+
+#block-whatscooking button:hover{
+    border:1px solid #53010a!important;
+    background: #53010a;
+    color:#e7f9fb;
+}
+
+#send-food-button{
+    padding: 10px;
+    /* transform: translate(-50%, -50%); */
+    background: #53010a;
+    color: #fff;
+    /* position: absolute; */
+    top:500px;
+    left: 25%;
+    margin: 20px;
+    border:1px #dafcff solid;
+}
+
+.node--type-event .mfp-close-btn-in .mfp-close {
+    color: #fff;
+    margin:-5px 0px 0 10px ;
+}
+
+.aside__item h3{
+  text-align: center;
+  color:#fff;
+}
+
+#bill-total{
+  width: 100px;
+  background: #fff;
+  padding: 12px;
+  height: 50px;
+  margin: 20px;
+  color: #53010a;
+  font-family: "Teko", sans-serif;
+  text-align: center;
+  display: inline;
+  position: absolute;
+  bottom: -70px;
+  right: -18px;
+}
+
+
+#basket-items{
+  background: #f7f0f0;
+  text-align: center;
+  margin: 4px 20px;
+  border:1px dotted white;
+  max-width: 400px;
+  padding: 10px 0 4px;
+  color: #53010a;
+  font-size: 1rem;
+}
+
+#basket-items p{
+  padding: 1px 0;
+  color: #53010a;
+}
+
+#basket-items p:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+#basket-items p:nth-child(even) {
+  background-color:#f3f0f0;
+}
+
+button.mfp-close{
+  background: #ab0517;
+  display: inline;
+  font-family: "Teko", sans-serif;
+  font-size: 1.5rem;
+  padding: 6px 4px;
+  border: 1px solid #d6d6d6!important;
+  text-align: center;
+  width: 140px;
+  margin: 10px auto;
+  line-height: 10px;
+  color:#fff!important;
+}
+
+#confirm-button{
+  border:2px #fff solid!important;
+  background: green;
+}
+
+#basket-buttons{
+  display: flex;
+  justify-content: center;
+  width:350px;
+}
+
+.basket-arrow{
+  margin-top: 160px;
+  color: #f8d3d7;
+  font-size: 40px;
+  padding: 4px;
+}
+
+.draggable {
+  padding: 1rem;
+  border: 1px solid black;
+  cursor: move;
+  color: #53010a;
+  font-family: "Teko", sans-serif;
+  background: #f7f0f0;
+  padding: 6px 4px;
+  border:1px solid #d6d6d6!important;
+  text-align: center;
+  width:140px;
+  margin:8px auto;
+  font-size: 1.0rem;
+}
+
+.draggable.dragging {
+  opacity: .5;
+}
+
+.drag-container {
+  background-color: #333;
+  padding: 1rem;
+  margin-top: 1rem;
+}

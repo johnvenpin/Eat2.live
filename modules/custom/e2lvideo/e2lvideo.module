@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains e2lvideo.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function e2lvideo_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the e2lvideo module.
+    case 'help.page.e2lvideo':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('The Eat 2 live Drupal Module') . '</p>';
+      return $output;
+
+    default:
+  }
+}

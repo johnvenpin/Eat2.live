@@ -1,0 +1,9 @@
+e2lvideo.e2lvideo:
+  path: '/admin/config/e2lvideo/e2lvideo'
+  defaults:
+    _form: '\Drupal\e2lvideo\Form\e2lvideo'
+    _title: 'e2lvideo'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE

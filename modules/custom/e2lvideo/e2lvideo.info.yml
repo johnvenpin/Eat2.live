@@ -1,0 +1,5 @@
+name: 'e2lvideo'
+type: module
+description: 'The Eat 2 live Drupal Module'
+core_version_requirement: ^8 || ^9
+package: 'Custom'

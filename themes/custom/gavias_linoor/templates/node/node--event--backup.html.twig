@@ -1,0 +1,129 @@
+<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+
+<script>if (window.module) module = window.module;</script>
+
+
+</head>
+
+<div id="renderer0" class="pluginOverlay"> </div>
+<div id="renderer1" class="pluginOverlay"> </div>
+<div id="renderer2" class="pluginOverlay"> </div>
+<div id="renderer3" class="pluginOverlay"> </div>
+<div id="renderer4" class="pluginOverlay"> </div>
+<div id="renderer5" class="pluginOverlay"> </div>
+<div id="toolbarLeft" class="toolbar">
+  <span id="participantStatus"></span>
+</div>
+<div id="toolbarCenter" class="toolbar">
+  <!-- This button toggles the camera privacy on or off. -->
+  <button id="cameraButton" title="Camera Privacy" class="toolbarButton cameraOn"></button>
+
+  <!-- This button joins and leaves the conference. -->
+  <button id="joinLeaveButton" title="Join Conference" class="toolbarButton callStart"></button>
+
+  <!-- This button mutes and unmutes the users' microphone. -->
+  <button id="microphoneButton" title="Microphone Privacy" class="toolbarButton microphoneOn"></button>
+</div>
+<div id="toolbarRight" class="toolbar">
+  <span id="connectionStatus">Initializing</span>
+  <span id="clientVersion"></span>
+</div>
+<div id="helper">
+  <table>
+
+  <tr id="helperPicker">
+    <td >
+      <table>
+      <tr>
+        <td id="joinViaBrowser" class="hidden">
+          <div class="helperHeader">
+
+          </div>
+
+          <div class="helperFooter">
+            <a href="javascript:joinViaBrowser()">Join the eating</a>
+          </div>
+        </td>
+
+        </td>
+
+      </tr>
+      </table>
+    </td>
+  </tr>
+  <tr id="helperPlugIn" class="hidden">
+    <td>
+      <div class="helperHeader">
+        <img src="Images/download.svg" onclick="javascript:joinViaBrowser()"/>
+      </div>
+      <ul>
+        <li class="helperCheck"><img src="Images/checkmark.svg"/>&nbsp;&nbsp;
+          Download and install it now
+        </li>
+        <li class="helperCheck"><img src="Images/checkmark.svg"/>&nbsp;&nbsp;
+          The plugin will launch automatically once installed
+        </li>
+      </ul>
+      <div class="helperFooter">
+        <a id="helperPlugInDownload" href="">Download</a>
+      </div>
+    </td>
+  </tr>
+  <tr id="helperApp" class="hidden">
+    <td>
+      <div class="helperHeader">
+        <img src="Images/download.svg" onclick="javascript:joinViaApp()"/>
+      </div>
+      <div><iframe id="helperAppLoader" src="" class="hidden"></iframe></div>
+      <ul>
+        <li class="helperCheck"><img src="Images/checkmark.svg"/>&nbsp;&nbsp;
+          Download and install it now
+        </li>
+        <li class="helperCheck"><img src="Images/checkmark.svg"/>&nbsp;&nbsp;
+          Launch once installed
+        </li>
+      </ul>
+      <div class="helperFooter">
+        <a id="helperAppDownload" href="">Download</a>
+        <a href="javascript:joinViaApp()">Launch</a>
+      </div>
+    </td>
+  </tr>
+  <tr id="helperOtherApp" class="hidden">
+    <td>
+      <div class="helperHeader">
+        <img src="Images/download.svg" onclick="javascript:joinViaOtherApp()"/>
+      </div>
+      <div><iframe id="helperOtherAppLoader" src="" class="hidden"></iframe></div>
+      <ul>
+        <li class="helperCheck"><img src="Images/checkmark.svg"/>&nbsp;&nbsp;
+          Build and install from the SDK
+        </li>
+        <li class="helperCheck"><img src="Images/checkmark.svg"/>&nbsp;&nbsp;
+          Launch once installed
+        </li>
+      </ul>
+      <div class="helperFooter">
+        <a href="javascript:joinViaOtherApp()">Launch</a>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div id="downloadContainerLegal">
+        By clicking &quot;Join&quot; or &quot;Download&quot;, you agree to our <a target="_blank" style="color: #6a6a6a;" href="http://www.vidyo.com/eula/">End-User License Agreement</a> & <a target="_blank" style="color: #6a6a6a;" href="http://www.vidyo.com/privacy-policy/">Privacy Policy</a>.
+      </div>
+        </td>
+  </tr>
+  </table>
+</div>
+<div id="failed" class="hidden">
+  <table>
+  <tr>
+    <td><img class="logo" src="Images/VidyoIcon.png"/></td>
+  </tr>
+  <tr>
+    <td id="failedText">Error</td>
+  </tr>
+  </table>
+</div>

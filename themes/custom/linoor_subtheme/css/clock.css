@@ -1,0 +1,112 @@
+
+
+#clockbody{
+  position: relative;
+  /* background: #0f3854; */
+  background: url(../../../images//bg-footer.jpg) no-repeat center center #222429;
+  /* background: radial-gradient(ellipse at center, #250000 0%, #53010a 70%); */
+  /* background: url("themes/custom/gavias_linoor/images/white-glitter-background.jpg") no-repeat fixed center; */
+  /* background: url("../../../images//bg-footer.jpg") ; */
+  /* background: url("/themes/custom/linoor_subtheme/images/baked-cherry-tomatoes-with-basil-medium.jpg") ; */
+  /* filter:sepia(90%);
+  filter:opacity(90%); */
+
+
+  /* background-size: 100%; */
+  width:80%;
+  min-width: 400px;
+  max-width: 700px;
+  margin:0 auto 0;
+  border-top:4px solid #e3e0e0;
+  border-bottom:4px solid #e3e0e0;
+  /* clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%); */
+  clip-path: polygon(0% 0%, 100% 0%, 100% 58%, 75% 75%, 75% 100%, 14% 100%, 0 35%);
+  margin-top: 10px;
+}
+
+
+
+#clockbody .post-title{
+  margin:0;
+  padding-top:20px;
+  /* color:#daf6ff; */
+  margin-bottom:0!important;
+}
+
+#clock {
+  /* font-family: "Share Tech Mono", monospace; */
+  font-family: "Teko", sans-serif;
+  color: #ffffff;
+  text-align: center;
+  /* left: 50%;
+  top: 50%; */
+  /* transform: translate(-50%, -50%); */
+  color: #fff;
+  /* text-shadow: 0 0 20px #0aafe6, 0 0 20px rgba(10, 175, 230, 0); */
+
+
+
+}
+
+.clockbody-on{
+  background:#e3e0e0;
+  color:#53010a!important;
+  font-weight: 600;
+
+  /* border:4px solid #53010a!important; */
+}
+
+#clockbody .clockbody-on .post-title{
+  color:#53010a!important;
+}
+
+#clockbody .clockbody-on{
+  margin-top: 0!important;
+}
+
+
+
+#clock .time {
+  letter-spacing: 0.05em;
+  font-size: 20px;
+  padding: 10px 0;
+}
+#clock .date {
+  letter-spacing: 0.1em;
+  font-size: 18px;
+  padding: 10px 0 0px;
+}
+#clock .text {
+  letter-spacing: 0.1em;
+  font-size: 12px;
+  padding: 10px 0 0;
+}
+
+#countdown{
+  margin-bottom: 10px;
+}
+
+#countdown li {
+  display: inline-block;
+  font-size: 1.0em;
+  list-style-type: none;
+  padding: 5px 8px;
+  text-transform: uppercase;
+  background: #454545;
+  color:#c0c0c0;
+}
+
+#countdown li span {
+  display: block;
+  font-size:3rem;
+  color:#fff;
+}
+
+.clockbody-on #countdown li{
+  background: #fff;
+  color:#53010a!important
+}
+
+.clockbody-on #countdown  li span{ 
+  color:#53010a!important
+}
