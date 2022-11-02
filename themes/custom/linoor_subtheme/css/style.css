@@ -885,3 +885,7 @@ input[type="time" i]{
   right:0px;
   top:10px;
 }
+
+.text-medium {
+  color:orange;
+}
