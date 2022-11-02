@@ -419,8 +419,8 @@ form .form-item label {
   color: #daf6ff!important;
   padding: 5px 5px!important;
   margin: 8px 5px;
-  width: 100px;
-  font-size: 12px!important;
+  width: 200px;
+  font-size: 20px!important;
 }
 button:focus {
   border: none;
