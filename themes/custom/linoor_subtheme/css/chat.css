@@ -192,10 +192,8 @@
 
 #video-render-container{
   display: grid;
-  grid-template-columns: 7fr 1fr;
-  /* max-width:1200px; */
+  min-height: 500px;
 }
-
  .chat-opened{
   display: grid;
   grid-template-columns: 5fr 2fr 1fr;
