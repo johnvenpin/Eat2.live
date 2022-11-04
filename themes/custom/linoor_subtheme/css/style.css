@@ -896,3 +896,7 @@ input[type="time" i]{
     display: none;
     margin-top: -15px;
 }
+
+.node--type-event .footer{
+  display:none;
+}
