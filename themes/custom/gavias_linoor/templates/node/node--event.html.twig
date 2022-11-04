@@ -75,13 +75,22 @@
 
 {% else %}
 
+<!-- <script src="https://cdn.tutorialjinni.com/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.tutorialjinni.com/magnific-popup.js/1.1.0/magnific-popup.css" /> -->
+
 <article{{ attributes.addClass(classes.addClass('node-detail')) }}>
   <div class="post-block event-full">
     <div class="post-thumbnail">
 
       <div id="video-render-container" class="video-wrapper-container">
 
+        <!-- <div id="renderer" class="light-body wow zoomIn animated" style='background: {{ content.field_event_image }} '>
+
+        </div> -->
+
+
           <script src='https://8x8.vc/vpaas-magic-cookie-4448cab111d14111821471867d74bcf3/external_api.js' async></script>
+          <style>html, body, #jaas-container { height: 100%; }</style>
           <script type="text/javascript">
             window.onload = () => {
               const api = new JitsiMeetExternalAPI("8x8.vc", {
@@ -91,9 +100,28 @@
             }
           </script>
 
-{# { content.field_event_image }}   // field image #}
+        <body><div id="jaas-container" /></body>
 
-        <div id="jaas-container"> </div> 
+
+
+      <!-- <div id="status"> <i class="fa fa-clock-o" aria-hidden="true"></i> <p class="blink"></p>
+
+          <div id="controls" class="">
+
+          <button id="joinLeaveButton" class="btn-theme wow zoomIn animated pulse" value="{ content.field_token.0 }}" onclick="joinCall()"> <i class="fa fa-play" aria-hidden="true"></i> <br>Join</button>
+
+          <button id="open-chat" class="btn-theme wow zoomIn animated animated" onclick="openChat()"><img src="/sites/default/files/gbb-uploads/icons-theme/icon-3.png"> <br>Chat</button>
+
+          <a href="#food-menu" class="open-popup-link btn-theme wow zoomIn animated food-menu"><span><img src="/sites/default/files/gbb-uploads/icons-theme/icon-6.png"> <br>Menu</span></a>
+
+          <button id="finish-eating" class="btn-theme wow zoomIn animated animated" onclick="goBack()"><img src="/sites/default/files/gbb-uploads/icons-theme/icon-9.png"> <br>Finish</button>
+
+          <a href="" class="btn-theme wow zoomIn animated"><i class="btn-curve"></i><span> <img src="/sites/default/files/gbb-uploads/icons-theme/fullscreen.png"><br>Screen</span></a>
+
+          </div>
+
+       </div> -->
+
 
        </div>
 
@@ -216,6 +244,15 @@
             <div id="start-time-readout"> </div>
 
             </div>
+      </div>
+
+
+
+
+            <div class="">
+
+
+
       </div>
 
       <button id="resourceIdButton" value="{{ node.label }}" onclick="messagecheck()" title="resourceIdButton" class="optionsHide">Recieve Message</button>
