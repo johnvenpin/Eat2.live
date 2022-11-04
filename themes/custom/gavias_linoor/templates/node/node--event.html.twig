@@ -100,7 +100,7 @@
             }
           </script>
 
-        <body><div id="jaas-container" /></body>
+        <div id="jaas-container" />
 
 
 
@@ -279,34 +279,6 @@
 
 
   </script>
-
-  <script src="https://static.vidyo.io/latest/javascript/VidyoClient/VidyoClient.js?onload=onVidyoClientLoaded"></script>
-
-  <script>
-
-        console.log("Checking Message");
-        /* Register to receive chat messages */
-        function receiveMessage(vidyoConnector){
-          vidyoConnector.RegisterMessageEventListener({
-              onChatMessageReceived: (participant, chatMessage) => {
-                document.getElementById("chat-message").innerHTML += "<div> " + chatMessage.body + " </div>";
-                document.getElementById("status").innerHTML += "<div> " + participant.name + " </div>";
-                console.log(participant.name);
-              }
-            }).then(() => {
-              // console.log("We got here 116");
-              // document.getElementById("message").innerHTML += chatMessage.body;
-
-              console.log("RegisterParticipantEventListener Success");
-              // setTimeout(function() { debugger; }, 15000)
-            }).catch(() => {
-              console.err("RegisterParticipantEventListener Failed");
-            });
-        };
-
-  </script>
-
-
 
       {% if content.comment %}
         <div id="node-single-comment">
