@@ -191,7 +191,7 @@
 }
 
 #video-render-container{
-  display: grid;
+  /* display: grid; */
   min-height: 500px;
 }
  .chat-opened{
