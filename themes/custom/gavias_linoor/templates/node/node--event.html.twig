@@ -90,6 +90,34 @@
 
         <h2>{{ label }} </h2>
 
+        <div id="clockbody">
+
+            <div id="clock">
+
+              <h1{{ title_attributes.addClass('post-title') }}>{{ label }}</h1>
+
+              <p class="date">  <span >{{ node.field_start_time_date.value|date("d M y")  }}</span>
+
+              <span class="month">{{ node.field_start_time_date.value|date('g:i a') }} </span> </p>
+
+              <div id="countdown">
+                   <ul>
+                     <li><span id="countdown-days"></span> Days</li>
+                     <li><span id="countdown-hours"></span> Hrs</li>
+                     <li><span id="countdown-minutes"></span> Mins</li>
+                     <li><span id="countdown-seconds"></span> Secs</li>
+                   </ul>
+              </div>
+
+              <div id="duration" data-duration="{{ content.field_eating_duration.0 }}">Duration: {{ content.field_eating_duration.0 }} </div>
+
+              <div data-startdate="{{ node.field_start_time_date.value }}" id="start-time-countdown" class="start-time-countdown time optionsHide">Eating Starts: {{  node.field_start_time_date.value|date("g:ia") }} </div>
+
+              <div id="start-time-readout"> </div>
+
+              </div>
+        </div>
+
 
         <script src='https://8x8.vc/vpaas-magic-cookie-4448cab111d14111821471867d74bcf3/external_api.js' async></script>
       <script type="text/javascript">
@@ -227,42 +255,8 @@
          <div id="chat-readout" class="optionsHide wow zoomIn animated"> </div>
        </div>
 
-      <div id="clockbody">
-
-          <div id="clock">
-
-            <h1{{ title_attributes.addClass('post-title') }}>{{ label }}</h1>
-
-            <p class="date">  <span >{{ node.field_start_time_date.value|date("d M y")  }}</span>
-
-            <span class="month">{{ node.field_start_time_date.value|date('g:i a') }} </span> </p>
-
-            <div id="countdown">
-                 <ul>
-                   <li><span id="countdown-days"></span> Days</li>
-                   <li><span id="countdown-hours"></span> Hrs</li>
-                   <li><span id="countdown-minutes"></span> Mins</li>
-                   <li><span id="countdown-seconds"></span> Secs</li>
-                 </ul>
-            </div>
-
-            <div id="duration" data-duration="{{ content.field_eating_duration.0 }}">Duration: {{ content.field_eating_duration.0 }} </div>
-
-            <div data-startdate="{{ node.field_start_time_date.value }}" id="start-time-countdown" class="start-time-countdown time optionsHide">Eating Starts: {{  node.field_start_time_date.value|date("g:ia") }} </div>
-
-            <div id="start-time-readout"> </div>
-
-            </div>
-      </div>
 
 
-
-
-            <div class="">
-
-
-
-      </div>
 
       <button id="resourceIdButton" value="{{ node.label }}" onclick="messagecheck()" title="resourceIdButton" class="optionsHide">Recieve Message</button>
 

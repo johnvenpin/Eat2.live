@@ -30,8 +30,6 @@
 
   function joinCall(){
 
-    console.log("hello bears");
-
     var token = document.getElementById('joinLeaveButton').value;
     var displayName = document.getElementById('textmessagebutton').value; // Sort this shit out display name passed via value!
     var resourceId = document.getElementById('resourceIdButton').value;
@@ -112,8 +110,6 @@ jQuery(document).ready(function ($) {
   var durationString = document.getElementById("duration").dataset.duration;
 
   durationSeconds = getSeconds(durationString);
-
-  console.log(durationSeconds);
 
   // main process of Eating Event
 
