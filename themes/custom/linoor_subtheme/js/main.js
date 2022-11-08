@@ -1,33 +1,5 @@
 
 
-// Vidyo connect startup
-
-    var vidyoConnector;
-
- // Callback method when VidyoIO is done loading (pointer to this method is passed in the onload parameter while including the
- // VidyoClient.js file)
-    function onVidyoClientLoaded(status) {
-      console.log("VidyoClient load state - " + status.state);
-      if (status.state == "READY") {
-        VC.CreateVidyoConnector({
-        viewId:"renderer", // Div ID where the composited video will be rendered, see VidyoConnector.html;
-        viewStyle:"VIDYO_CONNECTORVIEWSTYLE_Default", // Visual style of the composited renderer
-        remoteParticipants:10, // Maximum number of participants to render
-        logFileFilter:"error",
-        logFileName:"",
-        userData:""
-      }).then(function (vc) {
-        console.log("Create success check");
-        // document('div.video-wrapper').css("background", "none"); TODO
-        // document.getElementById("myDiv").style.backgroundColor = "lightblue";
-        vidyoConnector = vc;
-      }).catch(function(error){
-
-      });
-    }
-  };
-
-
   function joinCall(){
 
     var token = document.getElementById('joinLeaveButton').value;
