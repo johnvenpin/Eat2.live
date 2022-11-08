@@ -894,3 +894,5 @@ input[type="time" i]{
 .node--type-event .footer{
   display:none;
 }
+
+#jaas-container { height: 100%; }
