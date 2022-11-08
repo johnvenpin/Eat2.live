@@ -88,12 +88,14 @@
 
 #countdown li {
   display: inline-block;
-  font-size: 1.0em;
+  font-size: 0.8em;
   list-style-type: none;
-  padding: 5px 8px;
+  padding: 0px 10px;
+  margin: 0;
   text-transform: uppercase;
   background: #454545;
-  color:#c0c0c0;
+  color: #c0c0c0;
+  height: 60px;
 }
 
 #countdown li span {
@@ -107,6 +109,6 @@
   color:#53010a!important
 }
 
-.clockbody-on #countdown  li span{ 
+.clockbody-on #countdown  li span{
   color:#53010a!important
 }
