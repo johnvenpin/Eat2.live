@@ -1,46 +1,5 @@
 
 
-  function joinCall(){
-
-    var token = document.getElementById('joinLeaveButton').value;
-    var displayName = document.getElementById('textmessagebutton').value; // Sort this shit out display name passed via value!
-    var resourceId = document.getElementById('resourceIdButton').value;
-
-    console.log(token);
-
-    // alert(displayName);
-    // To join a video conference call Connect method
-    vidyoConnector.Connect({
-      host:"prod.vidyo.io",  // Server name, for most production apps it will be prod.vidyo.io
-      token:token,          // Add generated token (https://developer.vidyo.io/documentation/4-1-16-8/getting-started#Tokens)
-      displayName:displayName,  // Display name
-      resourceId:"room1", // Room name
-      onSuccess: function(){
-      console.log("Connected!! YAY!");
-      document.getElementById("chat-readout").innerHTML += "Connected!! YAY! ";
-      document.getElementById("chat-readout").classList.remove('optionsHide');
-        // document.getElementById("vertical-center").className.fadeOut(1000) = "optionsHide";
-      },
-      onFailure: function(reason){
-        console.error("Connection failed");
-        const p = document.getElementById('controls');
-        p.classList.remove('optionsHide');
-        document.getElementById("chat-readout").innerHTML += "Connections failed " + reason;
-        document.getElementById("chat-readout").classList.remove('optionsHide');
-        // document.getElementById("join-container").className = "optionsHide";
-        // document.getElementById("controls").classList.remove("optionsHide");
-      },
-      onDisconnected: function(reason) {
-        console.log("Disconnected - " + reason);
-        document.getElementById("chat-readout").innerHTML += "disconnected - " + reason;
-        document.getElementById("chat-readout").classList.remove('optionsHide');
-      }
-    })
-  }
-
-
-
-
 jQuery(document).ready(function ($) {
       $(function() {
       $("#chat-text").keypress(function (e) {
@@ -98,6 +57,10 @@ jQuery(document).ready(function ($) {
           var eventStart = unixCountDownDate - now + (timezoneCorrect * 1000);
           // var eventCountdown = durationSeconds;
           // Time calculations for days, hours, minutes and seconds
+
+          console.log(eventStart);
+          console.log(eventEnd);
+
           if (eventEnd < 0 ) {
 
               // Process Event has finished
@@ -186,7 +149,6 @@ jQuery(document).ready(function ($) {
         // Get Content of text area and add to chattext live
 
   var textcontent = document.getElementById('textcontent');
-  console.log(textContent);
 
   textcontent.onkeyup = textcontent.onkeypress = function(){document.getElementById('chat-readout').innerHTML = this.value;
   };
