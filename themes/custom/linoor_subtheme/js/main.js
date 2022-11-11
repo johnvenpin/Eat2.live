@@ -65,19 +65,18 @@ jQuery(document).ready(function ($) {
 
               // Process Event has finished
 
-              document.getElementById("clockbody").classList.add("fadeInUp", "animated","optionsHide");
-              document.getElementById("chat-message").classList.add("fadeInUp", "animated","optionsHide");
-              document.getElementById("renderer").classList.add('optionsHide');
-              document.getElementById("joinLeaveButton").classList.add('optionsHide');
-              document.getElementById("status").innerHTML = "<br> Sorry the Eating has finished <br><br>";
+
+              $('#clock').html('<br><p>Sorry the Eating has finished</p>');
+              $( ".renderer" ).remove();
+
 
           }   else if (eventStart < 0  && eventEnd > 0 )   {
 
               // Eating is happening
-              recieveChatMessage(vidyoConnector);
               timerDisplay(eventEnd); // send event end to timer
               document.getElementById("renderer").classList.remove('optionsHide');
               document.getElementById("renderer").classList.add("fadeInUp", "animated");
+              document.getElementById("clockbody").classList.add("optionsHide");
               document.getElementById("clock").classList.add("fadeInDown", "animated","clockbody-on");
               document.getElementById("start-time-readout").innerHTML = "Eating in progress";
               document.getElementById("status").classList.remove('optionsHide');

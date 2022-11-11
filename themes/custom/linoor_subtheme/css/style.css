@@ -887,7 +887,7 @@ input[type="time" i]{
 
 /* disable breadcrumbs */
 
-.breadcrumb-content-inner .gva-block-breadcrumb .breadcrumb-links {
+.breadcrumb-links {
     display: none;
     margin-top: -15px;
 }
@@ -897,3 +897,7 @@ input[type="time" i]{
 }
 
 #jaas-container { height: 100%; }
+
+#clockbody h2{
+  color:#ffdbdb;
+}
